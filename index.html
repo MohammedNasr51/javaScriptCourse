@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -52,6 +52,7 @@
         color: #f0f0f0;
       } */
     </style>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <!-- <input type="checkbox" id="myCheckbox" />
@@ -80,14 +81,23 @@
     <br>
     <br>
     <div id="paymentResult"></div> -->
-    
+
     <!-- <h1 id="myH1"></h1> -->
 
     <!-- i want theme switcher button with fancy style -->
     <!-- <div class="theme-switcher" id="themeSwitcher">
       <button id="themeToggle"></button>
     </div> -->
-
+    <!-- & stop watch app -->
+    <h1>Stop Watch</h1>
+    <div id="container">
+      <div id="display">00:00:00:00</div>
+      <div id="controls">
+        <button id="startBtn" onclick="start()">Start</button>
+        <button id="stopBtn" onclick="stop()">Stop</button>
+        <button id="resetBtn" onclick="reset()">Reset</button>
+      </div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>

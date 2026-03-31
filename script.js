@@ -1548,3 +1548,56 @@
 
 // let themeSwithcer = createThemeSwitcher();
 // themeSwithcer()
+//******************************************************/
+//& stop watch app
+//TODO create 3 functions to start, stop and reset the stopwatch
+//TODO we will create timer , startTime , elapsedTime and isRunning variables to store the timer, the start time, the elapsed time and the state of the stopwatch
+//TODO the start function will start the stopwatch and update the time every second
+//TODO the stop function will stop the stopwatch and clear the interval
+//TODO the reset function will reset all variables and clear the interval
+
+const display = document.querySelector("#display");
+let timerId = null;
+let startTime = 0;
+let elapsedTime = 0;
+let isRunning = false;
+
+function start() {
+  if (!isRunning) {
+    startTime = Date.now() - elapsedTime;
+    timerId = setInterval(update, 10);
+    isRunning = true;
+  }
+}
+
+function stop() {
+  if (isRunning) {
+    elapsedTime = Date.now() - startTime;
+    clearInterval(timerId);
+    isRunning = false;
+  }
+}
+
+function reset() {
+    display.textContent = "00:00:00:00";
+  clearInterval(timerId);
+  timerId = null;
+  startTime = 0;
+  elapsedTime = 0;
+  isRunning = false;
+}
+
+function update() {
+  elapsedTime = Date.now() - startTime;
+  let hours = Math.floor(elapsedTime / (1000 * 60 * 60));
+  let minutes = Math.floor((elapsedTime / (1000 * 60)) % 60);
+  let seconds = Math.floor((elapsedTime / 1000) % 60);
+  let milliseconds = Math.floor((elapsedTime % 1000) / 10);
+
+  display.textContent = `${addPadding(hours)}:${addPadding(minutes)}:${addPadding(seconds)}:${addPadding(milliseconds)}`;
+}
+
+function addPadding(num, size = 2) {
+  let s = num.toString();
+  return s.padStart(size, "0");
+}
