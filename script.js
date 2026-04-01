@@ -1556,48 +1556,104 @@
 //TODO the stop function will stop the stopwatch and clear the interval
 //TODO the reset function will reset all variables and clear the interval
 
-const display = document.querySelector("#display");
-let timerId = null;
-let startTime = 0;
-let elapsedTime = 0;
-let isRunning = false;
+// const display = document.querySelector("#display");
+// let timerId = null;
+// let startTime = 0;
+// let elapsedTime = 0;
+// let isRunning = false;
 
-function start() {
-  if (!isRunning) {
-    startTime = Date.now() - elapsedTime;
-    timerId = setInterval(update, 10);
-    isRunning = true;
-  }
-}
+// function start() {
+//   if (!isRunning) {
+//     startTime = Date.now() - elapsedTime;
+//     timerId = setInterval(update, 10);
+//     isRunning = true;
+//   }
+// }
 
-function stop() {
-  if (isRunning) {
-    elapsedTime = Date.now() - startTime;
-    clearInterval(timerId);
-    isRunning = false;
-  }
-}
+// function stop() {
+//   if (isRunning) {
+//     elapsedTime = Date.now() - startTime;
+//     clearInterval(timerId);
+//     isRunning = false;
+//   }
+// }
 
-function reset() {
-    display.textContent = "00:00:00:00";
-  clearInterval(timerId);
-  timerId = null;
-  startTime = 0;
-  elapsedTime = 0;
-  isRunning = false;
-}
+// function reset() {
+//     display.textContent = "00:00:00:00";
+//   clearInterval(timerId);
+//   timerId = null;
+//   startTime = 0;
+//   elapsedTime = 0;
+//   isRunning = false;
+// }
 
-function update() {
-  elapsedTime = Date.now() - startTime;
-  let hours = Math.floor(elapsedTime / (1000 * 60 * 60));
-  let minutes = Math.floor((elapsedTime / (1000 * 60)) % 60);
-  let seconds = Math.floor((elapsedTime / 1000) % 60);
-  let milliseconds = Math.floor((elapsedTime % 1000) / 10);
+// function update() {
+//   elapsedTime = Date.now() - startTime;
+//   let hours = Math.floor(elapsedTime / (1000 * 60 * 60));
+//   let minutes = Math.floor((elapsedTime / (1000 * 60)) % 60);
+//   let seconds = Math.floor((elapsedTime / 1000) % 60);
+//   let milliseconds = Math.floor((elapsedTime % 1000) / 10);
 
-  display.textContent = `${addPadding(hours)}:${addPadding(minutes)}:${addPadding(seconds)}:${addPadding(milliseconds)}`;
-}
+//   display.textContent = `${addPadding(hours)}:${addPadding(minutes)}:${addPadding(seconds)}:${addPadding(milliseconds)}`;
+// }
 
-function addPadding(num, size = 2) {
-  let s = num.toString();
-  return s.padStart(size, "0");
-}
+// function addPadding(num, size = 2) {
+//   let s = num.toString();
+//   return s.padStart(size, "0");
+// }
+//************************************************** */
+//& local storage in js
+// let body = document.body;
+// let theme = localStorage.getItem("theme") || "light";
+// body.style.backgroundColor = theme === "light" ? "#fff" : "#333";
+// body.style.color = theme === "light" ? "#000" : "#fff";
+// const lightBtn = document.querySelector("#lightBtn");
+// const darkBtn = document.querySelector("#darkBtn");
+// lightBtn.addEventListener("click", () => {
+//   body.style.backgroundColor = "#fff";
+//   body.style.color = "#000";
+//   localStorage.setItem("theme", "light");
+// });
+// darkBtn.addEventListener("click", () => {
+//   body.style.backgroundColor = "#333";
+//   body.style.color = "#fff";
+//   localStorage.setItem("theme", "dark");
+// });
+
+// let arrayOfProducts = [
+//   {name:'phone',
+//     price:10,
+//     qty:11
+//   },
+//   {name:'phone',
+//     price:10,
+//     qty:11
+//   },
+//   {name:'phone',
+//     price:10,
+//     qty:11
+//   },
+//   {name:'phone',
+//     price:10,
+//     qty:11
+//   },
+// ]
+
+// let jsondData = JSON.stringify(arrayOfProducts)
+// localStorage.setItem("productsArray", jsondData)
+// let data = localStorage.getItem("productsArray");
+// console.log(JSON.parse(data))
+//************************************************** */
+//& modules in js
+//~ module is a file that contains code that can be imported and used in other files
+//~ module can export variables, functions, classes, etc. and can import them from other modules
+//~ module can be used to organize code and to avoid naming conflicts.
+import { PI, getArea, getCircumference, getVolume } from './math.js'
+import Employee,{sayGoodbye} from './Person.js';
+const person = new Employee("Alice", 30);
+console.log(PI);
+console.log(getArea(5));
+console.log(getCircumference(5));
+console.log(getVolume(5));
+console.log(person.greet());
+sayGoodbye();

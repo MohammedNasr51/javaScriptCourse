@@ -1,0 +1,13 @@
+export default class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  greet() {
+    return `Hello, my name is ${this.name} and I am ${this.age} years old.`;
+  }
+}
+function sayGoodbye() {
+    console.log('goodby')
+}
+export { sayGoodbye };
