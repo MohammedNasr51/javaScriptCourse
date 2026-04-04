@@ -1648,12 +1648,66 @@
 //~ module is a file that contains code that can be imported and used in other files
 //~ module can export variables, functions, classes, etc. and can import them from other modules
 //~ module can be used to organize code and to avoid naming conflicts.
-import { PI, getArea, getCircumference, getVolume } from './math.js'
-import Employee,{sayGoodbye} from './Person.js';
-const person = new Employee("Alice", 30);
-console.log(PI);
-console.log(getArea(5));
-console.log(getCircumference(5));
-console.log(getVolume(5));
-console.log(person.greet());
-sayGoodbye();
+// import { PI, getArea, getCircumference, getVolume } from './math.js'
+// import Employee,{sayGoodbye} from './Person.js';
+// const person = new Employee("Alice", 30);
+// console.log(PI);
+// console.log(getArea(5));
+// console.log(getCircumference(5));
+// console.log(getVolume(5));
+// console.log(person.greet());
+// sayGoodbye();
+//************************************************** */
+//& sync and async in js
+//~synchronous code is code that is executed in order, one line at a time. Each line of code must wait for the previous line to finish before it can execute.
+
+//^asynchronous code is code that can be executed without waiting for the previous line to finish. It allows multiple operations to be performed at the same time, without blocking the main thread of execution. Asynchronous code is often used for tasks that take a long time to complete, such as fetching data from a server or reading a file from disk.
+
+// setTimeout(() => console.log("task 1"), 1000);
+// function func1(callback) {
+//   setTimeout(() => {
+//     console.log("task 1");
+//     callback(func3);
+//   }, 1000);
+// }
+
+// function func2(callback) {
+//   console.log("task 2");
+//   console.log("task 3");
+//   callback();
+// }
+
+// function func3() {
+//     console.log("task 4");
+//     console.log("task 5");
+// }
+// func1(func2);
+//************************************************** */
+//& error handling in js
+
+// try {
+//     console.lag("start of the program");
+// } catch (error) {
+//     console.error(error);
+// }
+// console.log("reach the end of the program");
+
+// let dividend = prompt("enter the dividend");
+// let divisor = prompt("enter the divisor");
+// x=0 //! Uncaught ReferenceError: x is not defined
+// console.lag('ddd') //! Uncaught TypeError: console.lag is not a function
+
+// try {
+//   if (divisor == 0) {
+//     throw new Error("divisor cannot be zero");
+//   }
+//   if (isNaN(dividend) || isNaN(divisor)) {
+//     throw new Error("both dividend and divisor must be numbers");
+//   }
+//   let result = (dividend / divisor).toFixed(2);
+//   console.log(result);
+// } catch (error) {
+//   console.log(error);
+// }
+
+// console.log("reach the end of the program");
