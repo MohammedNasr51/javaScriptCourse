@@ -1711,3 +1711,109 @@
 // }
 
 // console.log("reach the end of the program");
+//************************************************* */
+//& callback hell
+
+// function func1(callback) {
+//   setTimeout(() => {
+//     console.log("task 1");
+//     callback();
+//   }, 1000);
+// }
+
+// function func2(callback) {
+//   console.log("task 2");
+//   console.log("task 3");
+//   callback();
+// }
+
+// function func3() {
+//   console.log("task 4");
+//   console.log("task 5");
+// }
+// func1(() => func2(func3));
+
+//************************************************** */
+//& promises in js
+//~ promise is an object that represents the eventual completion (or failure) of an asynchronous operation and its resulting value.
+//~ promise can be in one of three states: pending, fulfilled, or rejected.
+//~ promise can be created using the Promise constructor, which takes a function as an argument. The function takes two parameters: resolve and reject, which are functions that can be called to change the state of the promise.
+//~ promise can be consumed using the then() method, which takes two callback functions as arguments: one for when the promise is fulfilled and one for when the promise is rejected. The then() method returns a new promise, which allows for chaining multiple then() calls together.
+
+//^1- do homework
+//^2- clean your room
+//^3- out the trash
+
+// function doHomework() {
+//   return new Promise((resolve, reject) => {
+//     let isHomeworkDone = true; //^ change this to false to test the reject case
+//     setTimeout(() => {
+//       if (isHomeworkDone) {
+//         resolve("Homework done!");
+//       } else {
+//         reject("Homework not done!");
+//       }
+//     }, 2000);
+//   });
+// }
+// function cleanRoom() {
+//   return new Promise((resolve, reject) => {
+//     let isRoomClean = true; //^ change this to false to test the reject case
+//     setTimeout(() => {
+//       if (isRoomClean) {
+//         resolve("Room cleaned!");
+//       } else {
+//         reject("Room not cleaned!");
+//       }
+//     }, 1500);
+//   });
+// }
+// function takeOutTrash() {
+//   return new Promise((resolve, reject) => {
+//     let isTrashTakenOut = false; //^ change this to false to test the reject case
+//     setTimeout(() => {
+//       if (isTrashTakenOut) {
+//         resolve("Trash taken out!");
+//       } else {
+//         reject("Trash not taken out!");
+//       }
+//     }, 1000);
+//   });
+// }
+
+// doHomework().then((message) => {
+//     console.log(`task 1 finished : ${message}`);
+//     return cleanRoom();
+// }).then((message) => {
+//     console.log(`task 2 finished : ${message}`);
+//     return takeOutTrash();
+// }).then((message) => {
+//     console.log(`task 3 finished : ${message}`);
+// }).catch((error) => {
+//     console.error(`error: ${error}`);
+// }).finally(()=>{
+//     console.log('end')
+// })
+
+//~ async await in js
+
+//^definition
+//~ async function is a function that is declared with the async keyword and allows the use of the await keyword inside it. An async function always returns a promise, and the await keyword can be used to wait for a promise to be fulfilled before continuing with the execution of the function.
+
+// async function performTasks() {
+//   try {
+//     const task1 = await doHomework();
+//     console.log(`task 1 finished : ${task1}`);
+
+//     const task2 = await cleanRoom();
+//     console.log(`task 2 finished : ${task2}`);
+
+//     const task3 = await takeOutTrash();
+//     console.log(`task 3 finished : ${task3}`);
+//   } catch (error) {
+//     console.error("Error: " + error);
+//   }
+// }
+
+// performTasks();
+//************************************************** */
