@@ -1817,3 +1817,11 @@
 
 // performTasks();
 //************************************************** */
+//~DOM DOM API
+// const redDivs = document.getElementsByClassName('red');
+// console.log(redDivs);
+// Array.from(redDivs).forEach(el => el.style.color = 'blue');
+
+const redDivs = document.querySelectorAll('.red');
+console.log(redDivs);
+redDivs.forEach(el=> el.style.border = '1px solid red')
