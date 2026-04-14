@@ -1822,6 +1822,64 @@
 // console.log(redDivs);
 // Array.from(redDivs).forEach(el => el.style.color = 'blue');
 
-const redDivs = document.querySelectorAll('.red');
-console.log(redDivs);
-redDivs.forEach(el=> el.style.border = '1px solid red')
+// const redDivs = document.querySelectorAll('.red');
+// console.log(redDivs);
+// redDivs.forEach(el=> el.style.border = '1px solid red')
+//************************************************** */
+//~DOM Methods (firstElementChild, lastElementChild, children, nextElementSibling,previousElementSibling, appendChild, removeChild, etc.)
+
+const fruits = document.getElementById("fruits");
+//^firstElementChild return the first child element of the parent element
+//^lastElementChild return the last child element of the parent element
+//^children return a live HTMLCollection of the child elements of the parent element
+// fruits.firstElementChild.style.backgroundColor = 'lightgreen';
+// fruits.children[0].style.backgroundColor = 'lightgreen';
+// console.log(fruits.children)
+
+//^nextElementSibling return the next sibling element of the current element
+//^previousElementSibling return the previous sibling element of the current element
+// fruits.nextElementSibling.style.backgroundColor = 'lightblue';
+// fruits.children[1].nextElementSibling.style.backgroundColor = 'lightblue';
+const food = document.getElementById('food');
+// food.previousElementSibling.style.backgroundColor = 'lightcoral';
+// food.children[2].previousElementSibling.style.backgroundColor = 'lightcoral';
+
+//& Cycle of Adding element to the dom and removing it
+
+//^ create element
+const fruitColorSwitchBtn = document.createElement("button");
+
+//^ set content and attributes
+fruitColorSwitchBtn.textContent = "switch color";
+fruitColorSwitchBtn.id = "fruitColorSwitchBtn";
+fruitColorSwitchBtn.classList.add("btn");
+
+//^ add event listener
+fruitColorSwitchBtn.addEventListener("click", () => {
+  Array.from(fruitColorSwitchBtn.parentElement.children).forEach((el) => {
+    if (el != fruitColorSwitchBtn.parentElement.lastElementChild)
+      el.classList.toggle("bgcolor");
+  });
+});
+
+//^ append to the dom
+fruits.appendChild(fruitColorSwitchBtn);
+
+//^ create element
+const foodColorSwitchBtn = document.createElement("button");
+
+//^ set content and attributes
+foodColorSwitchBtn.textContent = "switch color";
+foodColorSwitchBtn.id = "foodColorSwitchBtn";
+foodColorSwitchBtn.classList.add("btn");
+
+//^ add event listener
+foodColorSwitchBtn.addEventListener("click", () => {
+  Array.from(foodColorSwitchBtn.parentElement.children).forEach((el) => {
+    if (el != foodColorSwitchBtn.parentElement.firstElementChild)
+      el.classList.toggle("bgcolor");
+  });
+});
+
+//^ append to the dom
+food.prepend(foodColorSwitchBtn);
