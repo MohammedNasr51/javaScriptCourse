@@ -1828,7 +1828,7 @@
 //************************************************** */
 //~DOM Methods (firstElementChild, lastElementChild, children, nextElementSibling,previousElementSibling, appendChild, removeChild, etc.)
 
-const fruits = document.getElementById("fruits");
+// const fruits = document.getElementById("fruits");
 //^firstElementChild return the first child element of the parent element
 //^lastElementChild return the last child element of the parent element
 //^children return a live HTMLCollection of the child elements of the parent element
@@ -1840,46 +1840,140 @@ const fruits = document.getElementById("fruits");
 //^previousElementSibling return the previous sibling element of the current element
 // fruits.nextElementSibling.style.backgroundColor = 'lightblue';
 // fruits.children[1].nextElementSibling.style.backgroundColor = 'lightblue';
-const food = document.getElementById('food');
+// const food = document.getElementById('food');
 // food.previousElementSibling.style.backgroundColor = 'lightcoral';
 // food.children[2].previousElementSibling.style.backgroundColor = 'lightcoral';
 
 //& Cycle of Adding element to the dom and removing it
 
 //^ create element
-const fruitColorSwitchBtn = document.createElement("button");
+// const fruitColorSwitchBtn = document.createElement("button");
 
 //^ set content and attributes
-fruitColorSwitchBtn.textContent = "switch color";
-fruitColorSwitchBtn.id = "fruitColorSwitchBtn";
-fruitColorSwitchBtn.classList.add("btn");
+// fruitColorSwitchBtn.textContent = "switch color";
+// fruitColorSwitchBtn.id = "fruitColorSwitchBtn";
+// fruitColorSwitchBtn.classList.add("btn");
 
 //^ add event listener
-fruitColorSwitchBtn.addEventListener("click", () => {
-  Array.from(fruitColorSwitchBtn.parentElement.children).forEach((el) => {
-    if (el != fruitColorSwitchBtn.parentElement.lastElementChild)
-      el.classList.toggle("bgcolor");
-  });
-});
+// fruitColorSwitchBtn.addEventListener("click", () => {
+//   Array.from(fruitColorSwitchBtn.parentElement.children).forEach((el) => {
+//     if (el != fruitColorSwitchBtn.parentElement.lastElementChild)
+//       el.classList.toggle("bgcolor");
+//   });
+// });
 
 //^ append to the dom
-fruits.appendChild(fruitColorSwitchBtn);
+// fruits.appendChild(fruitColorSwitchBtn);
 
 //^ create element
-const foodColorSwitchBtn = document.createElement("button");
+// const foodColorSwitchBtn = document.createElement("button");
 
 //^ set content and attributes
-foodColorSwitchBtn.textContent = "switch color";
-foodColorSwitchBtn.id = "foodColorSwitchBtn";
-foodColorSwitchBtn.classList.add("btn");
+// foodColorSwitchBtn.textContent = "switch color";
+// foodColorSwitchBtn.id = "foodColorSwitchBtn";
+// foodColorSwitchBtn.classList.add("btn");
 
 //^ add event listener
-foodColorSwitchBtn.addEventListener("click", () => {
-  Array.from(foodColorSwitchBtn.parentElement.children).forEach((el) => {
-    if (el != foodColorSwitchBtn.parentElement.firstElementChild)
-      el.classList.toggle("bgcolor");
-  });
-});
+// foodColorSwitchBtn.addEventListener("click", () => {
+//   Array.from(foodColorSwitchBtn.parentElement.children).forEach((el) => {
+//     if (el != foodColorSwitchBtn.parentElement.firstElementChild)
+//       el.classList.toggle("bgcolor");
+//   });
+// });
 
 //^ append to the dom
-food.prepend(foodColorSwitchBtn);
+// food.prepend(foodColorSwitchBtn);
+
+//^ remove form the dom
+// food.removeChild(foodColorSwitchBtn);
+//*************************************************** */
+//~ Event Listener - mouse and key events
+// const myBox = document.getElementById("myBox");
+
+//& mouse events
+// myBox.addEventListener("click", (event) => {
+//   console.log(event)
+//   myBox.style.backgroundColor = "lightcoral";
+// });
+
+// myBox.addEventListener("mouseenter", e => {
+//   console.log("mouse enter")
+//   e.target.textContent = "ouch! 😣";
+//   e.target.style.backgroundColor = "lightgreen";
+// })
+
+// myBox.addEventListener("mouseleave", e => {
+//   console.log("mouse leave")
+//   e.target.textContent = "click me ☺";
+//   e.target.style.backgroundColor = "lightblue";
+// })
+
+// myBox.addEventListener("mouseover", e => {
+//   console.log("mouse over")
+//   e.target.textContent = "ouch! 😣";
+//   e.target.style.backgroundColor = "lightgreen";
+// })
+
+// myBox.addEventListener("mouseout", e => {
+//   console.log("mouse out")
+//   e.target.textContent = "click me ☺";
+//   e.target.style.backgroundColor = "lightblue";
+// })
+
+// myBox.addEventListener("mousemove", e => {
+//   console.log("mouse move")
+//   console.log(e.clientX,e.clientY)
+//   e.target.textContent = "click me ☺";
+//   e.target.style.backgroundColor = "lightblue";
+// })
+
+//& key events
+
+// let x = 0;
+// let y = 0;
+// let amount = 100;
+
+// document.addEventListener("keydown", (e) => {
+//   if (e.key.startsWith("Arrow")) {
+//     e.preventDefault();
+//     switch (e.key) {
+//       case "ArrowUp":
+//         y -= amount;
+//         break;
+//       case "ArrowDown":
+//         y += amount;
+//         break;
+//       case "ArrowLeft":
+//         x -= amount;
+//         break;
+//       case "ArrowRight":
+//         x += amount;
+//         break;
+//     }
+//     myBox.style.top = y + "px";
+//     myBox.style.left = x + "px";
+//   }
+// });
+
+//& show and hide image 
+const visibilityToggle = document.getElementById("showHide");
+const image = document.getElementById("img");
+// visibilityToggle.addEventListener('click', (e) => {
+//   if(image.style.display === 'none'){
+//     image.style.display = 'block';
+//     e.target.textContent = 'Hide'
+//   }else{
+//     image.style.display = 'none';
+//     e.target.textContent = 'Show'
+//   }
+// })
+
+visibilityToggle.addEventListener('click', (e) => {
+  if(image.style.visibility === 'hidden'){
+    image.style.visibility = 'visible';
+    e.target.textContent = 'Hide'
+  }else{
+    image.style.visibility = 'hidden';
+    e.target.textContent = 'Show'
+  }
+})

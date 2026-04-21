@@ -71,7 +71,7 @@ h1 {
 #controls #resetBtn:hover{
     background-color: #0563c7;
 } */
-
+/* 
 .btn{
     padding: 10px 20px;
     margin: 0 10px;
@@ -90,4 +90,49 @@ h1 {
 .bgcolor{
     background-color: lightblue;
     font-size: 2rem;
+} */
+
+/* Event Listeners - mouse and keys evens */
+/* #myBox{
+    width: 200px;
+    height: 200px;
+    background-color: lightblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+} */
+
+#img{
+    width: 200px;
+    height: 200px;
+    background-color: lightblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+#img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+#showHide{
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #007BFF;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
 }
