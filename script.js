@@ -1956,8 +1956,8 @@
 // });
 
 //& show and hide image 
-const visibilityToggle = document.getElementById("showHide");
-const image = document.getElementById("img");
+// const visibilityToggle = document.getElementById("showHide");
+// const image = document.getElementById("img");
 // visibilityToggle.addEventListener('click', (e) => {
 //   if(image.style.display === 'none'){
 //     image.style.display = 'block';
@@ -1968,12 +1968,12 @@ const image = document.getElementById("img");
 //   }
 // })
 
-visibilityToggle.addEventListener('click', (e) => {
-  if(image.style.visibility === 'hidden'){
-    image.style.visibility = 'visible';
-    e.target.textContent = 'Hide'
-  }else{
-    image.style.visibility = 'hidden';
-    e.target.textContent = 'Show'
-  }
-})
+// visibilityToggle.addEventListener('click', (e) => {
+//   if(image.style.visibility === 'hidden'){
+//     image.style.visibility = 'visible';
+//     e.target.textContent = 'Hide'
+//   }else{
+//     image.style.visibility = 'hidden';
+//     e.target.textContent = 'Show'
+//   }
+// })
