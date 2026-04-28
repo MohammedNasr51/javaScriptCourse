@@ -15,7 +15,7 @@
 //   .catch((error) => console.log(error));
 
 //~using async await
-const cardContainer = document.querySelector(".card-container");
+// const cardContainer = document.querySelector(".card-container");
 
 // const fetchData = async () => {
 //   try {
