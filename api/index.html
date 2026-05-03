@@ -3,23 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Api - Fetch</title>
+    <title>Modern E-Commerce API Lesson</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Api - Fetch</h1>
-    <div class="card-container">
-        <div class="card">
-            <div class="card-image">
-                <img src="" alt="">
-            </div>
-            <div class="card-content">
-                <h3>product title</h3>
-                <p>product description</p>
-                <span>price</span>
-            </div>
+    <header>
+        <div class="container header-content">
+            <h1>E-Commerce Admin</h1>
+            <p>Manage your products with ease</p>
         </div>
-    </div>
+    </header>
+
+    <main class="container">
+        <!-- Add Product Section -->
+        <section class="add-product-section">
+            <h2>Add New Product</h2>
+            <form id="add-product-form" class="product-form">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" name="title" required placeholder="e.g. Vintage Leather Jacket">
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="price">Price ($)</label>
+                        <input type="number" id="price" name="price" step="0.01" required placeholder="0.00">
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select id="category" name="category" required placeholder="e.g. clothing">
+                            <option value="" disabled selected>Select Category</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="image">Image URL</label>
+                    <input type="url" id="image" name="image" required placeholder="https://example.com/image.jpg">
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" rows="3" required placeholder="Product details..."></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Add Product</button>
+            </form>
+        </section>
+
+        <!-- Product List Section -->
+        <section class="product-list-section">
+            <div class="section-header">
+                <h2>Product Catalog</h2>
+                <span id="product-count" class="badge">0 products</span>
+            </div>
+            
+            <div id="product-container" class="card-container">
+                <!-- Products will be dynamically rendered here -->
+                <div class="loader">Loading products...</div>
+            </div>
+        </section>
+    </main>
+
     <script src="script.js"></script>
 </body>
 </html>
