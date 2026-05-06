@@ -9,9 +9,9 @@
     --text-muted: #64748b;
     --border-color: #e2e8f0;
     --border-radius: 12px;
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
-    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
-    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     --transition: all 0.3s ease;
 }
 
@@ -104,7 +104,8 @@ label {
     color: var(--text-main);
 }
 
-input, textarea {
+input,
+textarea {
     width: 100%;
     padding: 10px 12px;
     border: 1px solid var(--border-color);
@@ -114,11 +115,13 @@ input, textarea {
     transition: var(--transition);
 }
 
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
     outline: none;
     border-color: var(--primary-color);
     box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
 }
+
 select {
     width: 100%;
     padding: 10px 12px;
@@ -128,6 +131,7 @@ select {
     font-size: 0.95rem;
     transition: var(--transition);
 }
+
 select:focus {
     outline: none;
     border-color: var(--primary-color);
@@ -266,6 +270,7 @@ select:focus {
     color: var(--text-muted);
     margin-bottom: 20px;
     display: -webkit-box;
+    line-clamp: 3;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -292,4 +297,12 @@ select:focus {
     padding: 40px;
     color: var(--text-muted);
     font-size: 1.1rem;
+}
+
+#error {
+    color: var(--danger-color);
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+    display: none;
+    text-align: center;
 }

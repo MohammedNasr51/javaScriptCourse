@@ -5,8 +5,12 @@ const API_URL = "http://localhost:3000";
 const productContainer = document.getElementById("product-container");
 const productCount = document.getElementById("product-count");
 const addProductForm = document.getElementById("add-product-form");
-const categorySelect = addProductForm.querySelector('#category');
-
+const categorySelect = document.getElementById("category");
+const errorFormElement = document.getElementById("error");
+const titleInput = document.getElementById("title");
+const priceInput = document.getElementById("price");
+const imageInput = document.getElementById("image");
+const descriptionInput = document.getElementById("description");
 // -------------------------------------------------------------------
 // 1. GET Request: Fetch products and render them (Implemented)
 // -------------------------------------------------------------------
@@ -30,44 +34,42 @@ const fetchProducts = async () => {
 };
 
 const fetchCategories = async () => {
-    try {
-        const response = await fetch(`${API_URL}/categories`);
-        if (!response.ok) {
-            throw new Error(`Failed to fetch categories: ${response.status}`);
-        }
-        const categories = await response.json();
-        renderCategories(categories);
-    } catch (error) {
-        console.error('Error fetching categories:',error);
-        
+  try {
+    const response = await fetch(`${API_URL}/categories`);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch categories: ${response.status}`);
     }
-}
+    const categories = await response.json();
+    renderCategories(categories);
+  } catch (error) {
+    console.error("Error fetching categories:", error);
+  }
+};
 // -------------------------------------------------------------------
 // 1. GET Request: Fetch single product and render them (Implemented)
 // -------------------------------------------------------------------
 const fetchSingleProduct = async (id) => {
-    try {
-        const response = await fetch(`${API_URL}/${id}`);
-        if (!response.ok) {
-            throw new Error (`Failed to fetch product: ${response.status}`)
-        }
-        const product = await response.json();
-        renderProducts([product]);
-    } catch(error) {
-        console.log(error)
+  try {
+    const response = await fetch(`${API_URL}/products/${id}`);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch product: ${response.status}`);
     }
-}
-// rennder categories to the ui 
-const renderCategories = (categories) => {
-    categorySelect.innerHTML = ''; // Clear existing options
-    categories.forEach((category) => {
-        const option = document.createElement('option');
-        option.value = category.name;
-        option.textContent = category.name;
-        categorySelect.appendChild(option);
-    });
+    const product = await response.json();
+    renderProducts([product]);
+  } catch (error) {
+    console.log(error);
+  }
 };
-
+// rennder categories to the ui
+const renderCategories = (categories) => {
+  categorySelect.innerHTML = ""; // Clear existing options
+  categories.forEach((category) => {
+    const option = document.createElement("option");
+    option.value = category.name;
+    option.textContent = category.name;
+    categorySelect.appendChild(option);
+  });
+};
 
 // Render products to the UI
 const renderProducts = (products) => {
@@ -110,42 +112,75 @@ const renderProducts = (products) => {
 // -------------------------------------------------------------------
 // 2. POST Request: Add a new product (PLACEHOLDER for lesson)
 // -------------------------------------------------------------------
-addProductForm.addEventListener("submit", (e) => {
-  e.preventDefault(); // Prevent page reload
+addProductForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const title = titleInput.value;
+  const price = priceInput.value;
+  const category = categorySelect.value;
+  const image = imageInput.value;
+  const description = descriptionInput.value;
 
-  // Gather data from the form
-  const newProduct = {
-    title: document.getElementById("title").value,
-    price: parseFloat(document.getElementById("price").value),
-    category: document.getElementById("category").value,
-    image: document.getElementById("image").value,
-    description: document.getElementById("description").value,
-  };
+  if (!title || !price || !category || !image || !description) {
+    errorFormElement.textContent = "Please fill all the fields";
+    errorFormElement.style.display = "block";
+    return;
+  }
 
-  // ~~~ POST LOGIC PLACEHOLDER ~~~
-  console.log("POST request placeholder. Data to send:", newProduct);
-//   alert(
-//     "Add Product Triggered! Check console. \n\nWe will implement the fetch(POST) logic here in the lesson.",
-//   );
+  errorFormElement.style.display = "none"; // Clear previous errors
 
-  // Hint for the lesson:
-  // 1. fetch(API_URL, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(newProduct) })
-  // 2. Handle response
-  // 3. fetchProducts() again to refresh list
-    // 4. addProductForm.reset() to clear form
-    const addProduct = async ()=>{}
+  const newProduct = { title, price, category, image, description };
 
+  await addProduct(newProduct);
 });
+
+const addProduct = async(product) => {
+  try {
+    const response = await fetch(`${API_URL}/products`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(product),
+    });
+
+    if (!response.ok) throw new Error("Can't add this product");
+
+    // Clear form
+    titleInput.value = "";
+    priceInput.value = "";
+    imageInput.value = "";
+    descriptionInput.value = "";
+
+    // Only refresh AFTER the POST succeeds
+    fetchProducts();
+  } catch (error) {
+    console.error(error);
+    errorFormElement.textContent = error.message;
+    errorFormElement.style.display = "block";
+  }
+}
+
 
 // -------------------------------------------------------------------
 // 3. DELETE Request: Remove a product (PLACEHOLDER for lesson)
 // -------------------------------------------------------------------
 const deleteProduct = (id) => {
   // ~~~ DELETE LOGIC PLACEHOLDER ~~~
-  console.log(`DELETE request placeholder. Target Product ID:`, id);
-  alert(
-    `Delete Product (ID: ${id}) Triggered! Check console. \n\nWe will implement the fetch(DELETE) logic here in the lesson.`,
-  );
+  const deleteProductReq = async (id) => {
+    try {
+      const response = await fetch(`${API_URL}/products/${id}`, {
+        method: "DELETE",
+      });
+      if (!response.ok) {
+        throw new Error("Can't delete this product");
+      }
+      const data = await response.json();
+      console.log(data);
+      fetchProducts();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  deleteProductReq(id);
 
   // Hint for the lesson:
   // 1. fetch(\`\${API_URL}/\${id}\`, { method: 'DELETE' })
@@ -156,4 +191,3 @@ const deleteProduct = (id) => {
 // Initial Fetch on Page Load
 fetchProducts();
 fetchCategories();
-
