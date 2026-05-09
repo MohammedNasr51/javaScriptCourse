@@ -66,6 +66,11 @@ main {
     main {
         grid-template-columns: 350px 1fr;
     }
+    
+    .add-product-section {
+        position: sticky;
+        top: 20px;
+    }
 }
 
 /* Forms */
@@ -75,8 +80,6 @@ main {
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-sm);
     height: fit-content;
-    position: sticky;
-    top: 20px;
 }
 
 .add-product-section h2 {
@@ -140,6 +143,14 @@ select:focus {
 
 
 /* Buttons */
+.card-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    align-items: center;
+    
+}
+
 .btn {
     display: inline-block;
     font-family: inherit;
@@ -173,6 +184,20 @@ select:focus {
 
 .btn-danger:hover {
     background-color: var(--danger-color);
+    color: white;
+}
+
+.btn-warning {
+    background-color: transparent;
+    color: #f59e0b;
+    border: 1px solid #f59e0b;
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    margin-right: 8px;
+}
+
+.btn-warning:hover {
+    background-color: #f59e0b;
     color: white;
 }
 

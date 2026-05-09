@@ -48,14 +48,15 @@ const fetchCategories = async () => {
 // -------------------------------------------------------------------
 // 1. GET Request: Fetch single product and render them (Implemented)
 // -------------------------------------------------------------------
-const fetchSingleProduct = async (id) => {
+const fetchSingleProduct = async (id, editMode = false) => {
   try {
     const response = await fetch(`${API_URL}/products/${id}`);
     if (!response.ok) {
       throw new Error(`Failed to fetch product: ${response.status}`);
     }
     const product = await response.json();
-    renderProducts([product]);
+    if (editMode) return product;
+    else renderProducts([product]);
   } catch (error) {
     console.log(error);
   }
@@ -100,7 +101,10 @@ const renderProducts = (products) => {
                 
                 <div class="card-footer">
                     <span class="card-price">$${Number(product.price).toFixed(2)}</span>
-                    <button class="btn btn-danger" onclick="deleteProduct(${product.id})">Delete</button>
+                    <div class="card-actions">
+                        <button class="btn btn-warning" onclick="editProduct('${product.id}')">Edit</button>
+                        <button class="btn btn-danger" onclick="deleteProduct('${product.id}')">Delete</button>
+                    </div>
                 </div>
             </div>
         `;
@@ -133,7 +137,7 @@ addProductForm.addEventListener("submit", async (e) => {
   await addProduct(newProduct);
 });
 
-const addProduct = async(product) => {
+const addProduct = async (product) => {
   try {
     const response = await fetch(`${API_URL}/products`, {
       method: "POST",
@@ -156,8 +160,7 @@ const addProduct = async(product) => {
     errorFormElement.textContent = error.message;
     errorFormElement.style.display = "block";
   }
-}
-
+};
 
 // -------------------------------------------------------------------
 // 3. DELETE Request: Remove a product (PLACEHOLDER for lesson)
@@ -186,6 +189,82 @@ const deleteProduct = (id) => {
   // 1. fetch(\`\${API_URL}/\${id}\`, { method: 'DELETE' })
   // 2. Handle response
   // 3. fetchProducts() again to refresh list
+};
+
+// -------------------------------------------------------------------
+// 4. PUT Request: Edit a product (PLACEHOLDER for lesson)
+// -------------------------------------------------------------------
+const editProduct = (id) => {
+  // ~~~ EDIT LOGIC PLACEHOLDER ~~~
+  titleInput.value = "";
+  priceInput.value = "";
+  imageInput.value = "";
+  descriptionInput.value = "";
+  const getProductData = async (id) => {
+    const product = await fetchSingleProduct(id, true);
+    titleInput.value = product.title;
+    priceInput.value = product.price;
+    categorySelect.value = product.category;
+    imageInput.value = product.image;
+    descriptionInput.value = product.description;
+  };
+  const updateBtn = document.createElement("button");
+  const btn = addProductForm.querySelector("#add-btn");
+  btn.style.display = "none";
+  updateBtn.textContent = "Update";
+  updateBtn.className = "btn btn-warning";
+  updateBtn.type = "button";
+  addProductForm.appendChild(updateBtn);
+  if (updateBtn.type == "button") {
+    updateBtn.addEventListener("click", () => {
+      const newTitle = titleInput.value;
+      const newPrice = priceInput.value;
+      const newCategory = categorySelect.value;
+      const newImage = imageInput.value;
+      const newDescription = descriptionInput.value;
+      const Product = {
+        title: newTitle,
+        price: newPrice,
+        category: newCategory,
+        image: newImage,
+        description: newDescription,
+      };
+      const updateProduct = async () => {
+        try {
+          const response = await fetch(`${API_URL}/products/${id}`, {
+            method: "PATCH",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(Product),
+          });
+          if (!response.ok) {
+            throw new Error("Can't update this product");
+          }
+          const data = await response.json();
+          console.log(data);
+          fetchProducts();
+        } catch (error) {
+          console.error(error);
+        } finally {
+          updateBtn.style.display = "none";
+          btn.style.display = "block";
+          titleInput.value = "";
+          priceInput.value = "";
+          imageInput.value = "";
+          descriptionInput.value = "";
+        }
+      };
+      updateProduct();
+    });
+  }
+  getProductData(id);
+
+  // Hint for the lesson:
+  // 1. Fetch the product by id to populate the form
+  // 2. Change the form submit handler to do a PUT/PATCH request
+  // 3. fetch(`${API_URL}/products/${id}`, { method: 'PUT', ... })
+  // 4. fetchProducts() again to refresh list
 };
 
 // Initial Fetch on Page Load
