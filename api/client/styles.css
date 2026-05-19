@@ -14,7 +14,11 @@
     --transition: all 0.3s ease;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
 body {
     font-family: 'Inter', sans-serif;
@@ -60,6 +64,7 @@ header {
     border-radius: 20px;
 }
 
+
 .badge {
     background-color: var(--primary-color);
     color: white;
@@ -80,9 +85,11 @@ main {
     main {
         grid-template-columns: 1fr 350px;
     }
+
     .cart-section {
         position: sticky;
-        top: 100px; /* Below header */
+        top: 100px;
+        /* Below header */
     }
 }
 
@@ -166,12 +173,20 @@ main {
     justify-content: center;
 }
 
-.qty-btn:hover { background: #cbd5e1; }
+.qty-btn:hover {
+    background: #cbd5e1;
+}
 
 .qty-display {
     font-weight: 500;
     width: 20px;
     text-align: center;
+}
+
+.delete-cart {
+    padding: 4px 8px;
+    font-size: 12px;
+    width: 50px !important;
 }
 
 .btn {
@@ -184,9 +199,19 @@ main {
     transition: var(--transition);
 }
 
-.btn-primary { background: var(--primary-color); color: #fff; }
-.btn-primary:hover { background: var(--primary-hover); }
-.btn-danger { background: var(--danger-color); color: #fff; }
+.btn-primary {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: var(--primary-hover);
+}
+
+.btn-danger {
+    background: var(--danger-color);
+    color: #fff;
+}
 
 /* Cart Section */
 .cart-section {
@@ -224,12 +249,22 @@ main {
     align-items: center;
     padding: 12px 0;
     border-bottom: 1px solid var(--border-color);
+    position: relative;
 }
 
 .cart-item-info {
     flex: 1;
+    display: flex;
+    align-items: center;
 }
-
+.cart-item-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 12px;
+    border-radius: 8px;
+}
 .cart-item-title {
     font-size: 0.9rem;
     font-weight: 500;
@@ -237,7 +272,7 @@ main {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 150px;
+    max-width: 80px;
 }
 
 .cart-item-price {
@@ -263,4 +298,18 @@ main {
     font-weight: bold;
     margin-bottom: 16px;
 }
-.w-100 { width: 100%; }
+
+.w-100 {
+    width: 100%;
+}
+
+.error {
+    color: rgb(238, 5, 5);
+    padding-top: 10px;
+    text-align: center;
+
+}
+
+.hidden {
+    display: none;
+}
