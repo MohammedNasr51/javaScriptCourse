@@ -1955,7 +1955,7 @@
 //   }
 // });
 
-//& show and hide image 
+//& show and hide image
 // const visibilityToggle = document.getElementById("showHide");
 // const image = document.getElementById("img");
 // visibilityToggle.addEventListener('click', (e) => {
@@ -1977,3 +1977,47 @@
 //     e.target.textContent = 'Show'
 //   }
 // })
+//************************************************************* */
+//~Regular expression
+/*
+*   syntax => /pattern/modifiers
+*   new RegExp('pattern', 'modifiers')
+===> modifires flags
+*   i => case insensitive
+*   g => global search
+*   m => multiline search
+===> search method
+*   match(pattern) => return an array of matches or null if no match is found
+*   test(pattern) => return true if a match is found, false otherwise
+*   replace(pattern, replacement) => return a new string with some or all matches of a pattern replaced by a replacement
+*   search(pattern) => return the index of the first match, or -1 if no match is found
+===> ranges
+*   (x|y) => match either x or y
+*   [0-9] => match any digit
+*   [^0-9] => match any character that is not a digit from 0 to 9
+*   [a-z] => match any lowercase letter
+*   [^a-z] => match any character that is not a lowercase letter
+*   [abc] => match any character a, b, or c
+*   [A-Z] => match any uppercase letter
+*   [a-zA-Z0-9] => match any alphanumeric character
+*   [^abc] => match any character that is not a, b, or c
+*/
+// let regex = /hello/igm;
+// let str = `ello omar how are you ello ello
+// hello
+// hello
+// `;
+// let str2 = 'medhat . com . org net'
+//match
+// console.log(str.match(regex));
+// console.log(regex.test(str));
+// console.log(regex.test(str2));
+// let newRegex = /(com|org|net)/ig;
+// console.log(str2.match(newRegex));
+let newRegex = /[^0-9]/ig;
+let str2 = '123456@#$'
+
+console.log(str2.match(newRegex));
+
+
+
