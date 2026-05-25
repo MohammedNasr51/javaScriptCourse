@@ -1986,6 +1986,9 @@
 *   i => case insensitive
 *   g => global search
 *   m => multiline search
+*   s
+*   u => unicode search 
+*   y 
 ===> search method
 *   match(pattern) => return an array of matches or null if no match is found
 *   test(pattern) => return true if a match is found, false otherwise
@@ -1997,9 +2000,9 @@
 *   [^0-9] => match any character that is not a digit from 0 to 9
 *   [a-z] => match any lowercase letter
 *   [^a-z] => match any character that is not a lowercase letter
-*   [abc] => match any character a, b, or c
 *   [A-Z] => match any uppercase letter
 *   [a-zA-Z0-9] => match any alphanumeric character
+*   [abc] => match any character a, b, or c
 *   [^abc] => match any character that is not a, b, or c
 */
 // let regex = /hello/igm;
@@ -2014,10 +2017,50 @@
 // console.log(regex.test(str2));
 // let newRegex = /(com|org|net)/ig;
 // console.log(str2.match(newRegex));
-let newRegex = /[^0-9]/ig;
-let str2 = '123456@#$'
+// let newRegex = /[^0-9]/ig;
+// let str2 = '123456@#$'
+// let newRegex = /[^A-Z#a-z0-9]/g;
+// let str2 = '123456@#$asdfasdfadsfhDGGFEWSFGSG'
+// let newRegex = /[^abc]/g;
+// let str2 = '123456@#$asdfasdfadsfhDGGFEWSFGSGbc'
+// let newRegex = /[^abc]/g;
+// let str2 = '123456@#$asdfasdfadsfhDGGFEWSFGSGbc'
+
+// console.log(str2.match(newRegex));
+
+/*
+ * regex character classes
+ * . => match any character except newline
+ * \d => match any digit (equivalent to [0-9])
+ * \D => match any non-digit (equivalent to [^0-9])
+ * \w => match any word character (equivalent to [a-zA-Z0-9_])
+ * \W => match any non-word character (equivalent to [^a-zA-Z0-9_])
+ * \s => match any whitespace character (equivalent to [ \t\n\r\f\v])
+ * \S => match any non-whitespace character (equivalent to [^ \t\n\r\f\v])
+ * \b => match at the beginning or end of a word
+ * \B => match not at the beginning or end of a word
+ */
+
+// let newRegex = /(\bspam|spam\b)/ig;
+// let str2 = 'spam Spam Aspamo dSpam spamD1'
+
+// console.log(str2.match(newRegex));
+
+/*
+ * regex quantifiers
+ * n+ => match 1 or more occurrences of n
+ * n* => match 0 or more occurrences of n
+ * n? => match 0 or 1 occurrence of n
+*/
+// let newRegex = /\w+spam\w+/ig;
+// let str2 = 'spam Spam Aspamo dSpam spamD1'
+// let newRegex = /\w*spam\w*/ig;
+// let str2 = 'spam Spam Aspamo dSpam spamD1'
+// let newRegex = /\w?spam\w?/ig;
+// let str2 = 'spam Spam Aspamo dSpam spamD1'
+// let newRegex = /\w+@\w+.(com|org|net)/ig;
+// let str2 = '@abbas.abas mo@gmail.com omar@yahoo.com noon@noon.org medhat@medhat.com abshakor.com'
+// let newRegex = /(https?:\/\/)?(www.)?\w+.(com|net|org)/ig;
+// let str2 = 'https://www.google.com http://facebook.com noon.net yahoo.org medhat'
 
 console.log(str2.match(newRegex));
-
-
-
