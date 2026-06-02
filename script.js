@@ -2062,5 +2062,33 @@
 // let str2 = '@abbas.abas mo@gmail.com omar@yahoo.com noon@noon.org medhat@medhat.com abshakor.com'
 // let newRegex = /(https?:\/\/)?(www.)?\w+.(com|net|org)/ig;
 // let str2 = 'https://www.google.com http://facebook.com noon.net yahoo.org medhat'
+//*******************************************************/
+/*
+ * continue regex quantifiers
+ * n{m} => match exactly m occurrences of n
+ * n{m,n} => match between m and n occurrences of n
+ * n{m,} => match at least m occurrences of n
+ * **************************
+ * $ => match the end of the string
+ * ^ => match the beginning of the string
+ * (?=n) => positive lookahead, match n only if it is followed by n
+ * (?!n) => negative lookahead, match n only if it is not followed by n
+ */
+// let newRegex = /s\d{5,}s/ig;
+// let str2 = 's100s s3000s s50000s s950000s'
 
-console.log(str2.match(newRegex));
+
+// let myString = "we love programming";
+// let names = "10omarZ 2mohammed 3mustafaaZ 15medhatZ 5abdelrahmanZ";
+// console.log(/ing$/gi.test(myString))
+// console.log(/^we/gi.test(myString))
+// console.log(/(^we|ing$)/gi.test(myString))
+
+// console.log(names.match(/\d{2}\w{4}(?=z)/ig))
+// console.log(names.match(/\d\w{8}(?=z)/ig))
+// console.log(names.match(/\d\w{8}(?!z)/ig))
+
+// let newRegex = /s\d{5,}s/ig;
+// let str2 = 's100s s3000s s50000s s950000s'
+// console.log(str2.replaceAll(/s\d{5,}s/ig,"sorry cant handle this part of your string"))
+// console.log(str2.match(newRegex));

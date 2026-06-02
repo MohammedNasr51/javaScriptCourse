@@ -124,11 +124,23 @@
       />
     </div> -->
     <!-- <button id="showHide">Hide</button> -->
-    <form >
+    <!-- <form >
       <label for="email">Email:</label>
       <input type="password" id="email" required/>
       <button type="submit">Submit</button>
-    </form> 
+    </form>  -->
+    <form id="testPhoneRegexForm">
+      <label for="phone">Phone:</label>
+      <input type="text" id="phone" required />
+      <button type="submit">Submit</button>
+      <p id="error" style="color: red; display: none">
+        Please enter a valid phone number like this formula (1235) -123-4567.
+      </p>
+    </form>
+    <div>
+      <h1 id="displayPhone"></h1>
+    </div>
     <script type="module" src="script.js"></script>
+    <script type="module" src="testPhoneRegex.js"></script>
   </body>
 </html>
